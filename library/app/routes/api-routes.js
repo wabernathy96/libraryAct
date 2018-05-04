@@ -7,12 +7,22 @@ module.exports = function(app) {
 
   // Add sequelize code to get all books and return them as JSON
   app.get("/api/all", function(req, res) {
-
+    Book.findAll({})
   });
 
   // Add sequelize code to get a specific book and return it as JSON
   app.get("/api/:book", function(req, res) {
-
+    Book.findAll({
+        
+        where: {
+            title: req.params.book
+        }
+    
+    }).then((result) => {
+        
+        res.json(results);
+    
+    }).catch();
   });
 
   // Add sequelize code to get all books of a specific genre and return them as JSON
